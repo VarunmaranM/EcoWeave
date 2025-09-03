@@ -179,7 +179,7 @@ body.dark-mode #theme-toggle svg {
     text-decoration: none;
     font-weight: 600;
     display: inline-block;
-    transition: transform var(--transition-speed), background-color var(--transition-speed), color var(--transition-speed);
+    transition: transform var(--transition-speed), background-color var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .btn-primary {
@@ -252,7 +252,7 @@ body.dark-mode .content-section-alt {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow var(--transition-speed);
 }
 
 body.dark-mode .service-card, body.dark-mode .project-card {
@@ -351,4 +351,64 @@ body.dark-mode footer {
     .btn-secondary {
         margin-left: 0;
     }
+}
+
+/* Project link wrapper */
+.project-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Use the parent's text color */
+    display: block; /* Make the link fill the grid cell */
+}
+
+/* --- Futuristic UI Enhancements --- */
+
+/* Animated Gradient Background for Hero Section */
+@keyframes animated-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body.dark-mode .hero-section {
+    background: linear-gradient(270deg, #0d1a26, #1a2b3c, #0d1a26, #00A86B);
+    background-size: 400% 400%;
+    animation: animated-gradient 25s ease infinite;
+}
+
+/* Glow Effects for Dark Mode */
+body.dark-mode .hero-title,
+body.dark-mode .content-section h2,
+body.dark-mode .content-section-alt h2,
+body.dark-mode .service-card h3,
+body.dark-mode .project-card h4 {
+    text-shadow: 0 0 8px rgba(0, 168, 107, 0.5);
+}
+
+body.dark-mode .btn-primary {
+    box-shadow: 0 0 15px rgba(0, 168, 107, 0.4);
+}
+
+body.dark-mode .btn-primary:hover {
+    box-shadow: 0 0 25px rgba(0, 168, 107, 0.7);
+}
+
+/* --- On-Scroll Animation States --- */
+
+/* Initial state for all animated elements */
+.service-card, .project-card,
+#about h2, #services h2, #projects h2, #contact h2 {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Add transition to the titles */
+#about h2, #services h2, #projects h2, #contact h2 {
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Final state when the element is visible */
+.service-card.is-visible, .project-card.is-visible,
+#about h2.is-visible, #services h2.is-visible, #projects h2.is-visible, #contact h2.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
